@@ -25,8 +25,7 @@ const PORT = process.env.PORT || 4000
 
 app.use(
   cors({
-    // origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL,process.env.DUSHYANT_URL],
-    origin:'*',
+    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL,process.env.DUSHYANT_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
