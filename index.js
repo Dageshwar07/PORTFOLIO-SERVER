@@ -25,7 +25,8 @@ const PORT = process.env.PORT || 4000
 
 app.use(
   cors({
-    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL,process.env.DUSHYANT_URL],
+    // origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL,process.env.DUSHYANT_URL],
+    origin:'*',
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -41,7 +42,6 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
-
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/audio/sample.mp3"));  // Update with your audio file
 });
