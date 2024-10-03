@@ -11,15 +11,21 @@ import messageRouter from "./routes/messageRouter.js";
 import skillRouter from "./routes/skillRouter.js";
 import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
 import projectRouter from "./routes/projectRouter.js";
-
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
+// Emulate __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const app = express();
 dotenv.config();
 
+// Serving static files (like audio)
+app.use(express.static("public"));
 const PORT = process.env.PORT || 4000
 
 app.use(
   cors({
-    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
+    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL,process.env.DUSHYANT_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -36,7 +42,9 @@ app.use(
   })
 );
 
-
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/audio/sample.mp3"));  // Update with your audio file
+});
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/timeline", timelineRouter);
 app.use("/api/v1/message", messageRouter);
