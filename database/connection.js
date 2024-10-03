@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const dbConnection = () => {
   mongoose
-    .connect("mongodb+srv://Dageshwar07:Dagesh0712@cluster1.o9ihroc.mongodb.net/", {
+    .connect(process.env.MONGO_URI, {
       dbName: "MERN_STACK_PERSONAL_PORTFOLIO",
     })
     .then(() => {
