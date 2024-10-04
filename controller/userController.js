@@ -216,11 +216,11 @@ export const forgotPassword = catchAsyncErrors(async (req, res, next) => {
   if (!user) {
     return next(new ErrorHandler("User Not Found!", 404));
   }
-  const resetToken = user.getResetPasswordToken();
+  const resetToken = user.resetPasswordToken();
 
   await user.save({ validateBeforeSave: false });
 
-  const resetPasswordUrl = `${process.env.DASHBOARD_URL}/password/reset/${resetToken}`;
+  const resetPasswordUrl = `${process.env.PRO_DASHBOARD_URL}/password/reset/${resetToken}`;
 
   const message = `Your Reset Password Token is:- \n\n ${resetPasswordUrl}  \n\n If 
   You've not requested this email then, please ignore it.`;

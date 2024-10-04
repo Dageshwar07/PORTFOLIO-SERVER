@@ -22,13 +22,13 @@ dotenv.config();
 // Serving static files (like audio)
 app.use(express.static("public"));
 const PORT = process.env.PORT || 4000
-
+console.log("hii",process.env.PRO_DASHBOARD_URL,process.env.DEV_DASHBOARD_URL)
 app.use(
-  cors(
-    // origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL,process.env.DUSHYANT_URL],
-    // methods: ["GET", "POST", "PUT", "DELETE"],
-    // credentials: true,
-  )
+  cors({
+    origin: [ process.env.PRO_DASHBOARD_URL,process.env.DEV_DASHBOARD_URL],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
 );
 
 app.use(cookieParser());
