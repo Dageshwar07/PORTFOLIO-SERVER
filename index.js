@@ -24,11 +24,11 @@ app.use(express.static("public"));
 const PORT = process.env.PORT || 4000
 
 app.use(
-  cors({
-    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL,process.env.DUSHYANT_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
+  cors(
+    // origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL,process.env.DUSHYANT_URL],
+    // methods: ["GET", "POST", "PUT", "DELETE"],
+    // credentials: true,
+  )
 );
 
 app.use(cookieParser());
